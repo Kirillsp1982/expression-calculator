@@ -33,7 +33,8 @@ function expressionCalculator(expr) {
 	}
 		
 	while (stackNumbers.length > 1) {
-		let [y, x] = [stackNumbers.pop(), stackNumbers.pop()];
+	    let [y, x] = [stackNumbers.pop(), stackNumbers.pop()];
+	    if (stackOperators[stackOperators.length - 1] === '/' && y === 0) throw("TypeError: Division by zero.");
             stackNumbers.push(operators[stackOperators[stackOperators.length - 1]](x, y));
 	}
 	return stackNumbers[0];
