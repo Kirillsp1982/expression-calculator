@@ -5,6 +5,17 @@ function eval() {
 
 function expressionCalculator(expr) {
     
+    let bracketLeft = '(';
+    let bracketRight = ')';
+    let count = 0;
+	  	    
+    for (let j = 0; j < expr.length; j++) {
+	if (bracketLeft === expr[j]) count++;
+        if (bracketRight === expr[j]) count--;
+	if (count < 0) throw("ExpressionError: Brackets must be paired");
+	}
+    if (count !== 0) throw("ExpressionError: Brackets must be paired");
+	  
     const operators = {
     '+': (x, y) => x + y,
     '-': (x, y) => x - y,
